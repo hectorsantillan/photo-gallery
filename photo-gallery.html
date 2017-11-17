@@ -212,6 +212,13 @@
         this.selected = this.items.indexOf(item)
         this.isFullScreen = true
         this.toggleScrollBar(false)
+
+        this.dispatchEvent(new CustomEvent('photogallery_mouseevent', {
+          bubbles: true, composed: true, detail: {
+            open: true,
+            close: false
+          }
+        }));        
       }
 
       close () {
@@ -228,6 +235,13 @@
         this.selected = -1
         this.isFullScreen = false
         this.toggleScrollBar(true)
+
+        this.dispatchEvent(new CustomEvent('photogallery_mouseevent', {
+          bubbles: true, composed: true, detail: {
+            open: false,
+            close: true
+          }
+        }));          
       }
 
       change (direction) {
